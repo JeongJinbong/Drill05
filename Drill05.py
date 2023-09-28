@@ -22,21 +22,21 @@ def movetohand():
     global frame
     x1, y1 = cx, cy
     x2, y2 = hx, hy
-    for i in range(0, 100, 5):
+    for i in range(0, 100, 1):
         clear_canvas()
         TUK_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
         hand_arrow.draw(hx, hy)
         t = i/100
         movex = (1-t) * x1 + t * x2
         movey = (1-t) * y1 + t * y2
-        character.clip_draw(frame * 100, 100 * 1, 100, 100, movex, movey)
+        if cx < hx:
+            character.clip_draw(frame * 100, 100 * 1, 100, 100, movex, movey)
+        elif cx > hx:
+            character.clip_draw(frame * 100, 0 * 1, 100, 100, movex, movey)
         update_canvas()
         frame = (frame + 1) % 8
         handle_events()
         delay(0.016)
-
-
-
 
 while running:
     movetohand()

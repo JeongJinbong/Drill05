@@ -46,7 +46,9 @@ def movetohand():
         frame = (frame + 1) % 8
         delay(0.016)
         if i == 100-1:
+            cx, cy = hx, hy
             hx, hy = random.randint(0, 1200), random.randint(0, 1100)
+
 
 
 while running:
